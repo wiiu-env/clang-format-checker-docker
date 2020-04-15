@@ -2,14 +2,6 @@
 
 Docker image verifying the code format with clang-format
 
----
-
-*Disclaimer:
-
-This is an alpine based fork of [witekio/clang-format-checker](https://hub.docker.com/r/witekio/clang-format-checker)*
-
----
-
 ## Getting Started
 
 The following command will mount the current working directory folder to the `src` working directory, and recursively check the format of source files in `src` and  `include` directories, as well as `file.cpp`
@@ -24,7 +16,7 @@ The return code of the `docker run` will be
 
 ```
 # Recursively check all files from current folder
-$ docker run -v $(pwd):/src --rm witekio/clang-format-checker -r .                                 2 ↵
+$ docker run -v $(pwd):/src --rm 2-shell/clang-format-checker -r .                                 2 ↵
 --- ./testCode/File.cpp	(original)
 +++ ./testCode/File.cpp	(reformatted)
 @@ -3,18 +3,13 @@
@@ -44,7 +36,7 @@ The style used by `clang-format` can be defined by providing a `.clang-format` f
 Folders and files can be excluded with `--exclude`
 ```
 # Check recursively .h/.cpp files excluding 'vendors' folder and '*_test.cpp'
-docker run -v $(pwd):/src --rm witekio/clang-format-checker -r  --exclude src/third_party --exclude '*_test.cpp' src include foo.cpp
+docker run -v $(pwd):/src --rm 2-shell/clang-format-checker -r  --exclude src/third_party --exclude '*_test.cpp' src include foo.cpp
 ```
 
 `run-clang-format.py` help
@@ -91,7 +83,7 @@ pipelines:
   default:
     - step:
         name: Check code format
-        image: witekio/clang-format-checker
+        image: 2-shell/clang-format-checker
         script:
           - run-clang-format.py -r src
 ```
@@ -102,4 +94,5 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
+* This is a fork of [witekio/clang-format-checker](https://github.com/Witekio/clang-format-checker-docker), adjusted for using alpine as base
 * This Docker container uses `run-clang-format` from [https://github.com/Sarcasm/run-clang-format](https://github.com/Sarcasm/run-clang-format)
