@@ -4,7 +4,6 @@ RUN apk add --no-cache clang python3
 
 ADD run-clang-format/run-clang-format.py /usr/bin
 
-RUN mkdir /src
 WORKDIR /src
 ENTRYPOINT ["python3", "/usr/bin/run-clang-format.py"]
 
