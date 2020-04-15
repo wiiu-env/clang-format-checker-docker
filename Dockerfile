@@ -1,12 +1,10 @@
-FROM ubuntu:19.04
+FROM alpine:3
 
-RUN apt update && apt-get install -y --no-install-recommends \
-	clang-format python3 \
-        && rm -rf /var/lib/apt/lists/*
+RUN apk add --no-cache clang python3
 
 ADD run-clang-format/run-clang-format.py /usr/bin
 
 RUN mkdir /src
 WORKDIR /src
-ENTRYPOINT ["run-clang-format.py"]
+ENTRYPOINT ["python3", "/usr/bin/run-clang-format.py"]
 
