@@ -2,11 +2,19 @@
 
 Docker image verifying the code format with clang-format
 
+---
+
+*Disclaimer:
+
+This is an alpine based fork of [witekio/clang-format-checker](https://hub.docker.com/r/witekio/clang-format-checker)*
+
+---
+
 ## Getting Started
 
 The following command will mount the current working directory folder to the `src` working directory, and recursively check the format of source files in `src` and  `include` directories, as well as `file.cpp`
 
-`docker run --rm -v $(pwd):/src witekio/clang-format-checker -r src includes file.cpp`
+`docker run --rm -v $(pwd):/src 2-shell/clang-format-checker -r src includes file.cpp`
 
 ## Output
 
