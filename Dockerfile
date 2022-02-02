@@ -13,5 +13,5 @@ WORKDIR /src
 RUN echo "--- Clang-format version ---"
 RUN clang-format-13 --version
 
-ENTRYPOINT ["run-clang-format.py"]
+ENTRYPOINT ["run-clang-format.py", "--clang-format-executable", "clang-format-13"]
 
